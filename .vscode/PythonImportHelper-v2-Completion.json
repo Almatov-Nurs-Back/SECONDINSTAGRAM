@@ -96,64 +96,64 @@
     {
         "label": "verify",
         "kind": 2,
-        "importPath": "app",
-        "description": "app",
+        "importPath": "src.app",
+        "description": "src.app",
         "peekOfCode": "def verify():\n  if request.args.get('hub.mode') == 'subscribe' and request.args.get('hub.verify_token') == VERIFY_TOKEN:\n    return request.args.get('hub.challenge'), 200\n  return 'Verification token mismatch', 403\n@app.route('/', methods=['POST'])\ndef webhook():\n  data = request.get_json()\n  if data['object'] == 'instagram':\n    for entry in data['entry']:\n      for message in entry['messaging']:",
-        "detail": "app",
+        "detail": "src.app",
         "documentation": {}
     },
     {
         "label": "webhook",
         "kind": 2,
-        "importPath": "app",
-        "description": "app",
+        "importPath": "src.app",
+        "description": "src.app",
         "peekOfCode": "def webhook():\n  data = request.get_json()\n  if data['object'] == 'instagram':\n    for entry in data['entry']:\n      for message in entry['messaging']:\n        if message.get('message'):\n          text = message['message'].get('text')\n          sender_id = message['sender']['id']\n          send_message(sender_id, text)\n  return 'OK', 200",
-        "detail": "app",
+        "detail": "src.app",
         "documentation": {}
     },
     {
         "label": "authentication",
         "kind": 2,
-        "importPath": "app",
-        "description": "app",
+        "importPath": "src.app",
+        "description": "src.app",
         "peekOfCode": "def authentication():\n  return render_template('templates/oauth.html')\ndef send_message(recipient_id, text):\n  url = f\"https://graph.facebook.com/v12.0/me/messages?access_token={INSTAGRAM_MARKER}\"\n  headers = {'Content-Type': 'application/json'}\n  payload = {\n    'recipient': {'id': recipient_id},\n    'message': {'text': text}\n  }\n  response = requests.post(url, headers=headers, json=payload)",
-        "detail": "app",
+        "detail": "src.app",
         "documentation": {}
     },
     {
         "label": "send_message",
         "kind": 2,
-        "importPath": "app",
-        "description": "app",
+        "importPath": "src.app",
+        "description": "src.app",
         "peekOfCode": "def send_message(recipient_id, text):\n  url = f\"https://graph.facebook.com/v12.0/me/messages?access_token={INSTAGRAM_MARKER}\"\n  headers = {'Content-Type': 'application/json'}\n  payload = {\n    'recipient': {'id': recipient_id},\n    'message': {'text': text}\n  }\n  response = requests.post(url, headers=headers, json=payload)\nif __name__ == '__main__':\n  app.run(debug=True)",
-        "detail": "app",
+        "detail": "src.app",
         "documentation": {}
     },
     {
         "label": "app",
         "kind": 5,
-        "importPath": "app",
-        "description": "app",
+        "importPath": "src.app",
+        "description": "src.app",
         "peekOfCode": "app = Flask(__name__)\nVERIFY_TOKEN = os.getenv('VERIFY_TOKEN')\nINSTAGRAM_MARKER = os.getenv('INSTAGRAM_MARKER')\n@app.route('/', methods=['GET'])\ndef verify():\n  if request.args.get('hub.mode') == 'subscribe' and request.args.get('hub.verify_token') == VERIFY_TOKEN:\n    return request.args.get('hub.challenge'), 200\n  return 'Verification token mismatch', 403\n@app.route('/', methods=['POST'])\ndef webhook():",
-        "detail": "app",
+        "detail": "src.app",
         "documentation": {}
     },
     {
         "label": "VERIFY_TOKEN",
         "kind": 5,
-        "importPath": "app",
-        "description": "app",
+        "importPath": "src.app",
+        "description": "src.app",
         "peekOfCode": "VERIFY_TOKEN = os.getenv('VERIFY_TOKEN')\nINSTAGRAM_MARKER = os.getenv('INSTAGRAM_MARKER')\n@app.route('/', methods=['GET'])\ndef verify():\n  if request.args.get('hub.mode') == 'subscribe' and request.args.get('hub.verify_token') == VERIFY_TOKEN:\n    return request.args.get('hub.challenge'), 200\n  return 'Verification token mismatch', 403\n@app.route('/', methods=['POST'])\ndef webhook():\n  data = request.get_json()",
-        "detail": "app",
+        "detail": "src.app",
         "documentation": {}
     },
     {
         "label": "INSTAGRAM_MARKER",
         "kind": 5,
-        "importPath": "app",
-        "description": "app",
+        "importPath": "src.app",
+        "description": "src.app",
         "peekOfCode": "INSTAGRAM_MARKER = os.getenv('INSTAGRAM_MARKER')\n@app.route('/', methods=['GET'])\ndef verify():\n  if request.args.get('hub.mode') == 'subscribe' and request.args.get('hub.verify_token') == VERIFY_TOKEN:\n    return request.args.get('hub.challenge'), 200\n  return 'Verification token mismatch', 403\n@app.route('/', methods=['POST'])\ndef webhook():\n  data = request.get_json()\n  if data['object'] == 'instagram':",
-        "detail": "app",
+        "detail": "src.app",
         "documentation": {}
     }
 ]
