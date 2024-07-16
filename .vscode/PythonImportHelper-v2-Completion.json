@@ -1,0 +1,159 @@
+[
+    {
+        "label": "requests,",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests.",
+        "description": "requests.",
+        "detail": "requests.",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "get_conversations",
+        "kind": 2,
+        "importPath": "helpers.messages",
+        "description": "helpers.messages",
+        "peekOfCode": "def get_conversations(access_token, instagram_business_account_id):\n  url = f\"https://graph.facebook.com/v12.0/{instagram_business_account_id}/conversations\"\n  params = {\n    'access_token': access_token\n  }\n  response = requests.get(url, params=params)\n  return response.json()\ndef get_messages(access_token, conversation_id):\n  url = f\"https://graph.facebook.com/v12.0/{conversation_id}/messages\"\n  params = {",
+        "detail": "helpers.messages",
+        "documentation": {}
+    },
+    {
+        "label": "get_messages",
+        "kind": 2,
+        "importPath": "helpers.messages",
+        "description": "helpers.messages",
+        "peekOfCode": "def get_messages(access_token, conversation_id):\n  url = f\"https://graph.facebook.com/v12.0/{conversation_id}/messages\"\n  params = {\n    'access_token': access_token\n  }\n  response = requests.get(url, params=params)\n  return response.json()\naccess_token = os.getenv('INSTAGRAM_MARKER')\ninstagram_business_account_id = \"364595800072411\"\nconversations = get_conversations(access_token, instagram_business_account_id)",
+        "detail": "helpers.messages",
+        "documentation": {}
+    },
+    {
+        "label": "access_token",
+        "kind": 5,
+        "importPath": "helpers.messages",
+        "description": "helpers.messages",
+        "peekOfCode": "access_token = os.getenv('INSTAGRAM_MARKER')\ninstagram_business_account_id = \"364595800072411\"\nconversations = get_conversations(access_token, instagram_business_account_id)\nprint(conversations)\n# for conversation in conversations['data']:\n#   conversation_id = conversation['id']\n#   messages = get_messages(access_token, conversation_id)\n#   print(f\"Messages for conversation {conversation_id}:\", messages)",
+        "detail": "helpers.messages",
+        "documentation": {}
+    },
+    {
+        "label": "instagram_business_account_id",
+        "kind": 5,
+        "importPath": "helpers.messages",
+        "description": "helpers.messages",
+        "peekOfCode": "instagram_business_account_id = \"364595800072411\"\nconversations = get_conversations(access_token, instagram_business_account_id)\nprint(conversations)\n# for conversation in conversations['data']:\n#   conversation_id = conversation['id']\n#   messages = get_messages(access_token, conversation_id)\n#   print(f\"Messages for conversation {conversation_id}:\", messages)",
+        "detail": "helpers.messages",
+        "documentation": {}
+    },
+    {
+        "label": "conversations",
+        "kind": 5,
+        "importPath": "helpers.messages",
+        "description": "helpers.messages",
+        "peekOfCode": "conversations = get_conversations(access_token, instagram_business_account_id)\nprint(conversations)\n# for conversation in conversations['data']:\n#   conversation_id = conversation['id']\n#   messages = get_messages(access_token, conversation_id)\n#   print(f\"Messages for conversation {conversation_id}:\", messages)",
+        "detail": "helpers.messages",
+        "documentation": {}
+    },
+    {
+        "label": "verify",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def verify():\n  if request.args.get('hub.mode') == 'subscribe' and request.args.get('hub.verify_token') == VERIFY_TOKEN:\n    return request.args.get('hub.challenge'), 200\n  return 'Verification token mismatch', 403\n@app.route('/', methods=['POST'])\ndef webhook():\n  data = request.get_json()\n  if data['object'] == 'instagram':\n    for entry in data['entry']:\n      for message in entry['messaging']:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "webhook",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def webhook():\n  data = request.get_json()\n  if data['object'] == 'instagram':\n    for entry in data['entry']:\n      for message in entry['messaging']:\n        if message.get('message'):\n          text = message['message'].get('text')\n          sender_id = message['sender']['id']\n          send_message(sender_id, text)\n  return 'OK', 200",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "authentication",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def authentication():\n  return render_template('templates/oauth.html')\ndef send_message(recipient_id, text):\n  url = f\"https://graph.facebook.com/v12.0/me/messages?access_token={INSTAGRAM_MARKER}\"\n  headers = {'Content-Type': 'application/json'}\n  payload = {\n    'recipient': {'id': recipient_id},\n    'message': {'text': text}\n  }\n  response = requests.post(url, headers=headers, json=payload)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "send_message",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def send_message(recipient_id, text):\n  url = f\"https://graph.facebook.com/v12.0/me/messages?access_token={INSTAGRAM_MARKER}\"\n  headers = {'Content-Type': 'application/json'}\n  payload = {\n    'recipient': {'id': recipient_id},\n    'message': {'text': text}\n  }\n  response = requests.post(url, headers=headers, json=payload)\nif __name__ == '__main__':\n  app.run(debug=True)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app = Flask(__name__)\nVERIFY_TOKEN = os.getenv('VERIFY_TOKEN')\nINSTAGRAM_MARKER = os.getenv('INSTAGRAM_MARKER')\n@app.route('/', methods=['GET'])\ndef verify():\n  if request.args.get('hub.mode') == 'subscribe' and request.args.get('hub.verify_token') == VERIFY_TOKEN:\n    return request.args.get('hub.challenge'), 200\n  return 'Verification token mismatch', 403\n@app.route('/', methods=['POST'])\ndef webhook():",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "VERIFY_TOKEN",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "VERIFY_TOKEN = os.getenv('VERIFY_TOKEN')\nINSTAGRAM_MARKER = os.getenv('INSTAGRAM_MARKER')\n@app.route('/', methods=['GET'])\ndef verify():\n  if request.args.get('hub.mode') == 'subscribe' and request.args.get('hub.verify_token') == VERIFY_TOKEN:\n    return request.args.get('hub.challenge'), 200\n  return 'Verification token mismatch', 403\n@app.route('/', methods=['POST'])\ndef webhook():\n  data = request.get_json()",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "INSTAGRAM_MARKER",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "INSTAGRAM_MARKER = os.getenv('INSTAGRAM_MARKER')\n@app.route('/', methods=['GET'])\ndef verify():\n  if request.args.get('hub.mode') == 'subscribe' and request.args.get('hub.verify_token') == VERIFY_TOKEN:\n    return request.args.get('hub.challenge'), 200\n  return 'Verification token mismatch', 403\n@app.route('/', methods=['POST'])\ndef webhook():\n  data = request.get_json()\n  if data['object'] == 'instagram':",
+        "detail": "app",
+        "documentation": {}
+    }
+]
