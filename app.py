@@ -17,6 +17,7 @@ def verify():
 @app.route('/', methods=['POST'])
 def webhook():
   data = request.get_json()
+  print(data)
 
   if data['object'] == 'instagram':
     for entry in data['entry']:
@@ -38,7 +39,7 @@ def send_message(recipient_id, text):
     'recipient': {'id': recipient_id},
     'message': {'text': text}
   }
-  response = requests.post(url, headers=headers, json=payload)
+  requests.post(url, headers=headers, json=payload)
 
 if __name__ == '__main__':
   app.run(debug=True)
