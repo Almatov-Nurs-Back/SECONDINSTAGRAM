@@ -158,7 +158,7 @@
         "kind": 5,
         "importPath": "helpers.openai_",
         "description": "helpers.openai_",
-        "peekOfCode": "client = OpenAI(\n  api_key=os.environ.get(\"OPENAI_API_KEY\"),\n)\nmessages = dict()\ndef generate_chatgpt_answer(sender_id='', question=''):\n  # if sender_id not in messages:\n  #   messages[sender_id] = get_messages(sender_id)\n  #   print(messages)\n  #   pass\n  # chat_completion = client.chat.completions.create(",
+        "peekOfCode": "client = OpenAI(\n  # api_key=os.environ.get(\"OPENAI_API_KEY\"),\n  api_key='sk-None-FeKWqnQ2w7bColoKgYyFT3BlbkFJ3o27LYZaBKP06nXr26wT',\n)\nmessages = dict()\ndef generate_chatgpt_answer(sender_id='', question=''):\n  # if sender_id not in messages:\n  #   messages[sender_id] = get_messages(sender_id)\n  #   print(messages)\n  #   pass",
         "detail": "helpers.openai_",
         "documentation": {}
     },

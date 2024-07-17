@@ -3,7 +3,8 @@ from openai import OpenAI
 from messages import get_messages
 
 client = OpenAI(
-  api_key=os.environ.get("OPENAI_API_KEY"),
+  # api_key=os.environ.get("OPENAI_API_KEY"),
+  api_key='sk-None-FeKWqnQ2w7bColoKgYyFT3BlbkFJ3o27LYZaBKP06nXr26wT',
 )
 
 messages = dict()
