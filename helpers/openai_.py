@@ -35,6 +35,7 @@ def generate_chatgpt_answer(sender_id='', question=''):
     return 'Всего доброго'
   elif 'кто ты' in question or 'Чем вы занимаетесь' in question or 'чем вы занимаетесь' in question:
     return 'Я ai ассистент из "..." компании!'
-  return question
+  else:
+    return question
 
 print(generate_chatgpt_answer('1198676774465284', 'Чем вы занимаетесь?'))
