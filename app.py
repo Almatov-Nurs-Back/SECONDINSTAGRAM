@@ -1,5 +1,5 @@
-import requests, os, sys
-from flask import Flask, request, render_template
+import requests, os
+from flask import Flask, request
 from dotenv import load_dotenv
 from helpers.openai_ import generate_chatgpt_answer
 
@@ -31,9 +31,9 @@ def webhook():
           send_message(sender_id, text)
   return 'OK', 200
 
-@app.route('/oauth', methods=['GET'])
-def authentication():
-  return render_template('templates/oauth.html')
+# @app.route('/oauth', methods=['GET'])
+# def authentication():
+#   return render_template('templates/oauth.html')
 
 def send_message(recipient_id, text):
   url = f"https://graph.facebook.com/v12.0/me/messages?access_token={INSTAGRAM_MARKER}"

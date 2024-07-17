@@ -66,14 +66,6 @@
         "documentation": {}
     },
     {
-        "label": "render_template",
-        "importPath": "flask",
-        "description": "flask",
-        "isExtraImport": true,
-        "detail": "flask",
-        "documentation": {}
-    },
-    {
         "label": "generate_chatgpt_answer",
         "importPath": "helpers.openai_",
         "description": "helpers.openai_",
@@ -177,15 +169,6 @@
         "importPath": "app",
         "description": "app",
         "peekOfCode": "def webhook():\n  data = request.get_json()\n  if data['object'] == 'instagram':\n    for entry in data['entry']:\n      for message in entry['messaging']:\n        if message.get('message'):\n          text = message['sender']['text']\n          sender_id = message['sender']['id']\n          generated_answer = generate_chatgpt_answer(sender_id=sender_id, question=text)\n          print(generated_answer)",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "authentication",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def authentication():\n  return render_template('templates/oauth.html')\ndef send_message(recipient_id, text):\n  url = f\"https://graph.facebook.com/v12.0/me/messages?access_token={INSTAGRAM_MARKER}\"\n  headers = {'Content-Type': 'application/json'}\n  payload = {\n    'recipient': {'id': recipient_id},\n    'message': {'text': text}\n  }\n  requests.post(url, headers=headers, json=payload)",
         "detail": "app",
         "documentation": {}
     },
