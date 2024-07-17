@@ -24,7 +24,7 @@ def webhook():
     for entry in data['entry']:
       for message in entry['messaging']:
         if message.get('message'):
-          text = message['sender']['text']
+          text = message['message'].get('text')
           sender_id = message['sender']['id']
           generated_answer = generate_chatgpt_answer(sender_id=sender_id, question=text)
           print(generated_answer)
