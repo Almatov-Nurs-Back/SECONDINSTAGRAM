@@ -1,6 +1,8 @@
 import requests, os
 from flask import Flask, request, render_template
 from dotenv import load_dotenv
+from helpers.openai_ import generate_chatgpt_answer
+from .helpers.messages import get_messages
 
 load_dotenv()
 app = Flask(__name__)
@@ -17,14 +19,15 @@ def verify():
 @app.route('/', methods=['POST'])
 def webhook():
   data = request.get_json()
-  print(data)
 
   if data['object'] == 'instagram':
     for entry in data['entry']:
       for message in entry['messaging']:
         if message.get('message'):
-          text = message['message'].get('text')
+          text = message['sender']['text']
           sender_id = message['sender']['id']
+          generated_answer = generate_chatgpt_answer(sender_id=sender_id, question=text)
+          print(generated_answer)
           send_message(sender_id, text)
   return 'OK', 200
 
