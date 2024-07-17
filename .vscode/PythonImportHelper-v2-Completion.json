@@ -154,15 +154,6 @@
         "documentation": {}
     },
     {
-        "label": "client",
-        "kind": 5,
-        "importPath": "helpers.openai_",
-        "description": "helpers.openai_",
-        "peekOfCode": "client = OpenAI(\n  api_key=os.environ.get(\"OPENAI_API_KEY\"),\n)\nmessages = dict()\ndef generate_chatgpt_answer(sender_id='', question=''):\n  # if sender_id not in messages:\n  #   messages[sender_id] = get_messages(sender_id)\n  #   print(messages)\n  #   pass\n  # chat_completion = client.chat.completions.create(",
-        "detail": "helpers.openai_",
-        "documentation": {}
-    },
-    {
         "label": "messages",
         "kind": 5,
         "importPath": "helpers.openai_",
