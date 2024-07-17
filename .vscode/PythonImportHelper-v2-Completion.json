@@ -43,10 +43,10 @@
     },
     {
         "label": "get_messages",
-        "importPath": "messages",
-        "description": "messages",
+        "importPath": "helpers.messages",
+        "description": "helpers.messages",
         "isExtraImport": true,
-        "detail": "messages",
+        "detail": "helpers.messages",
         "documentation": {}
     },
     {

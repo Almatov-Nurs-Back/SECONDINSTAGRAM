@@ -1,8 +1,8 @@
-import requests, os
+import requests, os, sys
 from flask import Flask, request, render_template
 from dotenv import load_dotenv
 from helpers.openai_ import generate_chatgpt_answer
-from .helpers.messages import get_messages
+
 
 load_dotenv()
 app = Flask(__name__)

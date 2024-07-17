@@ -1,6 +1,6 @@
 import os
 from openai import OpenAI
-from messages import get_messages
+from helpers.messages import get_messages
 
 # client = OpenAI(
 #   api_key=os.environ.get("OPENAI_API_KEY"),
@@ -33,7 +33,7 @@ def generate_chatgpt_answer(sender_id='', question=''):
     return 'Приветствую'
   elif 'Досвидание' in question or 'пока' in question:
     return 'Всего доброго'
-  elif 'кто ты' in question:
+  elif 'кто ты' in question or 'Чем вы занимаетесь' in question or 'чем вы занимаетесь' in question:
     return 'Я ai ассистент из "..." компании!'
   return question
 
