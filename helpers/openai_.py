@@ -29,7 +29,6 @@ def generate_chatgpt_answer(sender_id='', question=''):
   #   model="gpt-3.5-turbo",
   # )
   # return chat_completion.choices[0].message.content
-  print(question)
   if 'Привет' in question or 'привет' in question:
     return 'Приветствую'
   elif 'Досвидание' in question or 'пока' in question:
@@ -39,4 +38,4 @@ def generate_chatgpt_answer(sender_id='', question=''):
   else:
     return question
 
-print(generate_chatgpt_answer('1198676774465284', 'Чем вы занимаетесь?'))
+# print(generate_chatgpt_answer('1198676774465284', 'Чем вы занимаетесь?'))
