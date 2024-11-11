@@ -141,7 +141,16 @@
         "kind": 2,
         "importPath": "helpers.openai_",
         "description": "helpers.openai_",
-        "peekOfCode": "def generate_chatgpt_answer(sender_id='', question=''):\n  # if sender_id not in messages:\n  #   messages[sender_id] = get_messages(sender_id)\n  #   print(messages)\n  #   pass\n  # chat_completion = client.chat.completions.create(\n  #   messages=[\n  #     {\n  #       \"role\": \"system\",\n  #       \"content\": \"Ты продавец машин, ты консультируешь клиентов, которые будут тебе писать.\",",
+        "peekOfCode": "def generate_chatgpt_answer(sender_id='', prompt=''):\n  # ----- Code with ChatGPT -----\n  if sender_id not in messages:\n    messages[sender_id] = get_messages(sender_id)\n    print(messages)\n    pass\n  print(sender_id)\n  # -----------------------------\n  chat_completion = client.chat.completions.create(\n    messages=[",
+        "detail": "helpers.openai_",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "helpers.openai_",
+        "description": "helpers.openai_",
+        "peekOfCode": "client = OpenAI(\n  api_key=os.environ.get(\"OPENAI_API_KEY\"),\n)\nmessages = dict()\ndef generate_chatgpt_answer(sender_id='', prompt=''):\n  # ----- Code with ChatGPT -----\n  if sender_id not in messages:\n    messages[sender_id] = get_messages(sender_id)\n    print(messages)\n    pass",
         "detail": "helpers.openai_",
         "documentation": {}
     },
@@ -150,7 +159,7 @@
         "kind": 5,
         "importPath": "helpers.openai_",
         "description": "helpers.openai_",
-        "peekOfCode": "messages = dict()\ndef generate_chatgpt_answer(sender_id='', question=''):\n  # if sender_id not in messages:\n  #   messages[sender_id] = get_messages(sender_id)\n  #   print(messages)\n  #   pass\n  # chat_completion = client.chat.completions.create(\n  #   messages=[\n  #     {\n  #       \"role\": \"system\",",
+        "peekOfCode": "messages = dict()\ndef generate_chatgpt_answer(sender_id='', prompt=''):\n  # ----- Code with ChatGPT -----\n  if sender_id not in messages:\n    messages[sender_id] = get_messages(sender_id)\n    print(messages)\n    pass\n  print(sender_id)\n  # -----------------------------\n  chat_completion = client.chat.completions.create(",
         "detail": "helpers.openai_",
         "documentation": {}
     },
@@ -168,7 +177,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def webhook():\n  data = request.get_json()\n  if data['object'] == 'instagram':\n    for entry in data['entry']:\n      for message in entry['messaging']:\n        if message.get('message'):\n          text = message['message'].get('text')\n          sender_id = message['sender']['id']\n          generated_answer = generate_chatgpt_answer(sender_id=sender_id, question=text)\n          print(generated_answer)",
+        "peekOfCode": "def webhook():\n  data = request.get_json()\n  if data['object'] == 'instagram':\n    for entry in data['entry']:\n      for message in entry['messaging']:\n        if message.get('message'):\n          text = message['message'].get('text')\n          sender_id = message['sender']['id']\n          generated_answer = generate_chatgpt_answer(sender_id=sender_id, prompt=text)\n          print(generated_answer)",
         "detail": "app",
         "documentation": {}
     },
