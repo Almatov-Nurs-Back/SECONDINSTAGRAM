@@ -25,6 +25,15 @@
         "documentation": {}
     },
     {
+        "label": "aiohttp",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "aiohttp",
+        "description": "aiohttp",
+        "detail": "aiohttp",
+        "documentation": {}
+    },
+    {
         "label": "os",
         "kind": 6,
         "isExtraImport": true,
@@ -78,16 +87,7 @@
         "kind": 2,
         "importPath": "helpers.messages",
         "description": "helpers.messages",
-        "peekOfCode": "def get_instagram_id(instagram_user_id=''):\n conversation_url = url + page_id + '/conversations'\n param = dict()\n param['platform'] = 'instagram'\n param['access_token'] = page_access_token\n param['user_id'] = instagram_user_id\n response = requests.get(url=conversation_url, params=param)\n response = response.json()\n return response['data'][0]['id']\ndef get_messages_using_conversation_id(converstaion_id=''):",
-        "detail": "helpers.messages",
-        "documentation": {}
-    },
-    {
-        "label": "get_messages_using_conversation_id",
-        "kind": 2,
-        "importPath": "helpers.messages",
-        "description": "helpers.messages",
-        "peekOfCode": "def get_messages_using_conversation_id(converstaion_id=''):\n message_url = url + converstaion_id\n message_param = dict()\n message_param['fields'] = 'messages'\n message_param['access_token'] = page_access_token\n # this will give us all the message_id in the conversation but not the messages directly\n response = requests.get(url=message_url, params=message_param)\n response = response.json()\n # so will get the details of the messages using their message_id\n message_ = []",
+        "peekOfCode": "def get_instagram_id(instagram_user_id=''):\n    conversation_url = url + page_id + '/conversations'\n    param = {\n        'platform': 'instagram',\n        'access_token': page_access_token,\n        'user_id': instagram_user_id\n    }\n    response = requests.get(url=conversation_url, params=param)\n    response = response.json()\n    return response['data'][0]['id']",
         "detail": "helpers.messages",
         "documentation": {}
     },
@@ -96,7 +96,7 @@
         "kind": 2,
         "importPath": "helpers.messages",
         "description": "helpers.messages",
-        "peekOfCode": "def get_messages(sender_id=''):\n  return get_messages_using_conversation_id(get_instagram_id(sender_id))",
+        "peekOfCode": "def get_messages(sender_id=''):\n    conversation_id = get_instagram_id(sender_id)\n    return asyncio.run(get_messages_using_conversation_id(conversation_id))",
         "detail": "helpers.messages",
         "documentation": {}
     },
@@ -105,7 +105,7 @@
         "kind": 5,
         "importPath": "helpers.messages",
         "description": "helpers.messages",
-        "peekOfCode": "username = 'test51877'\npage_id = '364595800072411'\nurl = 'https://graph.facebook.com/v20.0/'\npage_access_token = os.getenv('INSTAGRAM_MARKER')\ndef get_instagram_id(instagram_user_id=''):\n conversation_url = url + page_id + '/conversations'\n param = dict()\n param['platform'] = 'instagram'\n param['access_token'] = page_access_token\n param['user_id'] = instagram_user_id",
+        "peekOfCode": "username = 'test51877'\npage_id = '364595800072411'\nurl = 'https://graph.facebook.com/v20.0/'\npage_access_token = os.getenv('INSTAGRAM_MARKER')\ndef get_instagram_id(instagram_user_id=''):\n    conversation_url = url + page_id + '/conversations'\n    param = {\n        'platform': 'instagram',\n        'access_token': page_access_token,\n        'user_id': instagram_user_id",
         "detail": "helpers.messages",
         "documentation": {}
     },
@@ -114,7 +114,7 @@
         "kind": 5,
         "importPath": "helpers.messages",
         "description": "helpers.messages",
-        "peekOfCode": "page_id = '364595800072411'\nurl = 'https://graph.facebook.com/v20.0/'\npage_access_token = os.getenv('INSTAGRAM_MARKER')\ndef get_instagram_id(instagram_user_id=''):\n conversation_url = url + page_id + '/conversations'\n param = dict()\n param['platform'] = 'instagram'\n param['access_token'] = page_access_token\n param['user_id'] = instagram_user_id\n response = requests.get(url=conversation_url, params=param)",
+        "peekOfCode": "page_id = '364595800072411'\nurl = 'https://graph.facebook.com/v20.0/'\npage_access_token = os.getenv('INSTAGRAM_MARKER')\ndef get_instagram_id(instagram_user_id=''):\n    conversation_url = url + page_id + '/conversations'\n    param = {\n        'platform': 'instagram',\n        'access_token': page_access_token,\n        'user_id': instagram_user_id\n    }",
         "detail": "helpers.messages",
         "documentation": {}
     },
@@ -123,7 +123,7 @@
         "kind": 5,
         "importPath": "helpers.messages",
         "description": "helpers.messages",
-        "peekOfCode": "url = 'https://graph.facebook.com/v20.0/'\npage_access_token = os.getenv('INSTAGRAM_MARKER')\ndef get_instagram_id(instagram_user_id=''):\n conversation_url = url + page_id + '/conversations'\n param = dict()\n param['platform'] = 'instagram'\n param['access_token'] = page_access_token\n param['user_id'] = instagram_user_id\n response = requests.get(url=conversation_url, params=param)\n response = response.json()",
+        "peekOfCode": "url = 'https://graph.facebook.com/v20.0/'\npage_access_token = os.getenv('INSTAGRAM_MARKER')\ndef get_instagram_id(instagram_user_id=''):\n    conversation_url = url + page_id + '/conversations'\n    param = {\n        'platform': 'instagram',\n        'access_token': page_access_token,\n        'user_id': instagram_user_id\n    }\n    response = requests.get(url=conversation_url, params=param)",
         "detail": "helpers.messages",
         "documentation": {}
     },
@@ -132,7 +132,7 @@
         "kind": 5,
         "importPath": "helpers.messages",
         "description": "helpers.messages",
-        "peekOfCode": "page_access_token = os.getenv('INSTAGRAM_MARKER')\ndef get_instagram_id(instagram_user_id=''):\n conversation_url = url + page_id + '/conversations'\n param = dict()\n param['platform'] = 'instagram'\n param['access_token'] = page_access_token\n param['user_id'] = instagram_user_id\n response = requests.get(url=conversation_url, params=param)\n response = response.json()\n return response['data'][0]['id']",
+        "peekOfCode": "page_access_token = os.getenv('INSTAGRAM_MARKER')\ndef get_instagram_id(instagram_user_id=''):\n    conversation_url = url + page_id + '/conversations'\n    param = {\n        'platform': 'instagram',\n        'access_token': page_access_token,\n        'user_id': instagram_user_id\n    }\n    response = requests.get(url=conversation_url, params=param)\n    response = response.json()",
         "detail": "helpers.messages",
         "documentation": {}
     },
@@ -141,7 +141,7 @@
         "kind": 2,
         "importPath": "helpers.openai_",
         "description": "helpers.openai_",
-        "peekOfCode": "def generate_chatgpt_answer(sender_id='', prompt=''):\n  # ----- Code with ChatGPT -----\n  if sender_id not in messages:\n    messages[sender_id] = get_messages(sender_id)\n    print(messages)\n    pass\n  print(sender_id)\n  # -----------------------------\n  chat_completion = client.chat.completions.create(\n    messages=[",
+        "peekOfCode": "def generate_chatgpt_answer(sender_id='', prompt=''):\n  # # ----- Code with ChatGPT -----\n  # if sender_id not in messages:\n  #   messages[sender_id] = get_messages(sender_id)\n  #   print(messages)\n  #   pass\n  # print(sender_id)\n  # # -----------------------------\n  chat_completion = client.chat.completions.create(\n    messages=[",
         "detail": "helpers.openai_",
         "documentation": {}
     },
@@ -150,7 +150,7 @@
         "kind": 5,
         "importPath": "helpers.openai_",
         "description": "helpers.openai_",
-        "peekOfCode": "client = OpenAI(\n  api_key=os.environ.get(\"OPENAI_API_KEY\"),\n)\nmessages = dict()\ndef generate_chatgpt_answer(sender_id='', prompt=''):\n  # ----- Code with ChatGPT -----\n  if sender_id not in messages:\n    messages[sender_id] = get_messages(sender_id)\n    print(messages)\n    pass",
+        "peekOfCode": "client = OpenAI(\n  api_key=os.environ.get(\"OPENAI_API_KEY\"),\n)\nmessages = dict()\ndef generate_chatgpt_answer(sender_id='', prompt=''):\n  # # ----- Code with ChatGPT -----\n  # if sender_id not in messages:\n  #   messages[sender_id] = get_messages(sender_id)\n  #   print(messages)\n  #   pass",
         "detail": "helpers.openai_",
         "documentation": {}
     },
@@ -159,7 +159,7 @@
         "kind": 5,
         "importPath": "helpers.openai_",
         "description": "helpers.openai_",
-        "peekOfCode": "messages = dict()\ndef generate_chatgpt_answer(sender_id='', prompt=''):\n  # ----- Code with ChatGPT -----\n  if sender_id not in messages:\n    messages[sender_id] = get_messages(sender_id)\n    print(messages)\n    pass\n  print(sender_id)\n  # -----------------------------\n  chat_completion = client.chat.completions.create(",
+        "peekOfCode": "messages = dict()\ndef generate_chatgpt_answer(sender_id='', prompt=''):\n  # # ----- Code with ChatGPT -----\n  # if sender_id not in messages:\n  #   messages[sender_id] = get_messages(sender_id)\n  #   print(messages)\n  #   pass\n  # print(sender_id)\n  # # -----------------------------\n  chat_completion = client.chat.completions.create(",
         "detail": "helpers.openai_",
         "documentation": {}
     },
