@@ -28,7 +28,6 @@ def webhook():
           text = message['message'].get('text')
           sender_id = message['sender']['id']
           generated_answer = generate_chatgpt_answer(sender_id=sender_id, prompt=text)
-          print(generated_answer, 'asd')
           send_message(sender_id, generated_answer)
   return 'OK', 200
 
