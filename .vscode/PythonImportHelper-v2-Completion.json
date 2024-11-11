@@ -96,7 +96,7 @@
         "kind": 2,
         "importPath": "helpers.messages",
         "description": "helpers.messages",
-        "peekOfCode": "def get_messages(sender_id=''):\n    conversation_id = get_instagram_id(sender_id)\n    return asyncio.run(get_messages_using_conversation_id(conversation_id))",
+        "peekOfCode": "def get_messages(sender_id=''):\n    conversation_id = get_instagram_id(sender_id)\n    messages = asyncio.run(get_messages_using_conversation_id(conversation_id))\n    print(messages)\n    return messages",
         "detail": "helpers.messages",
         "documentation": {}
     },
