@@ -9,13 +9,13 @@ client = OpenAI(
 messages = dict()
 
 def generate_chatgpt_answer(sender_id='', prompt=''):
-  # # ----- Code with ChatGPT -----
-  # if sender_id not in messages:
-  #   messages[sender_id] = get_messages(sender_id)
-  #   print(messages)
-  #   pass
-  # print(sender_id)
-  # # -----------------------------
+  # ----- Code with ChatGPT -----
+  if sender_id not in messages:
+    messages[sender_id] = get_messages(sender_id)
+    print(messages)
+    pass
+  print(sender_id)
+  # -----------------------------
 
   chat_completion = client.chat.completions.create(
     messages=[
@@ -23,9 +23,9 @@ def generate_chatgpt_answer(sender_id='', prompt=''):
         "role": "system",
         "content": "Ты ассистент отдыхного пансионата Иссык-Куле, юрточного городка \"Asman-Resort\". Ты консультируешь туристов, которые интересуятся отдыхм у нас.",
       },
-      # # ----- Code with ChatGPT -----
-      # *messages[sender_id],
-      # # -----------------------------
+      # ----- Code with ChatGPT -----
+      *messages[sender_id],
+      # -----------------------------
       {
         'role': 'user',
         'content': prompt
