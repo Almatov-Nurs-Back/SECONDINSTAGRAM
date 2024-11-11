@@ -17,6 +17,7 @@ def get_instagram_id(instagram_user_id=''):
     'user_id': instagram_user_id
   }
   response = requests.get(url=conversation_url, params=param).json()
+  print(f'data: {response}')
 
   # Проверяем, есть ли 'data' в ответе
   if 'data' in response and response['data']:
