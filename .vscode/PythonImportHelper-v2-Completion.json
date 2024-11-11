@@ -87,7 +87,7 @@
         "kind": 2,
         "importPath": "helpers.messages",
         "description": "helpers.messages",
-        "peekOfCode": "def get_instagram_id(instagram_user_id=''):\n  conversation_url = url + page_id + '/conversations'\n  param = {\n    'platform': 'instagram',\n    'access_token': page_access_token,\n    'user_id': instagram_user_id\n  }\n  response = requests.get(url=conversation_url, params=param).json()\n  print(f'data: {response}')\n  # Проверяем, есть ли 'data' в ответе",
+        "peekOfCode": "def get_instagram_id(instagram_user_id=''):\n  conversation_url = url + page_id + '/conversations'\n  param = {\n    'platform': 'instagram',\n    'access_token': page_access_token,\n    'user_id': instagram_user_id\n  }\n  response = requests.get(url=conversation_url, params=param).json()\n  # Проверяем, есть ли 'data' в ответе\n  if 'data' in response and response['data']:",
         "detail": "helpers.messages",
         "documentation": {}
     },
@@ -132,7 +132,7 @@
         "kind": 5,
         "importPath": "helpers.messages",
         "description": "helpers.messages",
-        "peekOfCode": "page_access_token = os.getenv('INSTAGRAM_MARKER')\ndef get_instagram_id(instagram_user_id=''):\n  conversation_url = url + page_id + '/conversations'\n  param = {\n    'platform': 'instagram',\n    'access_token': page_access_token,\n    'user_id': instagram_user_id\n  }\n  response = requests.get(url=conversation_url, params=param).json()\n  print(f'data: {response}')",
+        "peekOfCode": "page_access_token = os.getenv('INSTAGRAM_MARKER')\ndef get_instagram_id(instagram_user_id=''):\n  conversation_url = url + page_id + '/conversations'\n  param = {\n    'platform': 'instagram',\n    'access_token': page_access_token,\n    'user_id': instagram_user_id\n  }\n  response = requests.get(url=conversation_url, params=param).json()\n  # Проверяем, есть ли 'data' в ответе",
         "detail": "helpers.messages",
         "documentation": {}
     },
@@ -141,7 +141,7 @@
         "kind": 2,
         "importPath": "helpers.openai_",
         "description": "helpers.openai_",
-        "peekOfCode": "def generate_chatgpt_answer(sender_id='', prompt=''):\n  # ----- Code with ChatGPT -----\n  if sender_id not in messages:\n    messages[sender_id] = get_messages(sender_id)\n    print(f'messages: {messages}')\n    pass\n  # -----------------------------\n  chat_completion = client.chat.completions.create(\n    messages=[\n      {",
+        "peekOfCode": "def generate_chatgpt_answer(sender_id='', prompt=''):\n  # ----- Code with ChatGPT -----\n  if sender_id not in messages:\n    messages[sender_id] = get_messages(sender_id)\n    # print(f'messages: {messages}')\n    pass\n  # -----------------------------\n  print(messages[sender_id])\n  chat_completion = client.chat.completions.create(\n    messages=[",
         "detail": "helpers.openai_",
         "documentation": {}
     },
@@ -150,7 +150,7 @@
         "kind": 5,
         "importPath": "helpers.openai_",
         "description": "helpers.openai_",
-        "peekOfCode": "client = OpenAI(\n  api_key=os.environ.get(\"OPENAI_API_KEY\"),\n)\nmessages = dict()\ndef generate_chatgpt_answer(sender_id='', prompt=''):\n  # ----- Code with ChatGPT -----\n  if sender_id not in messages:\n    messages[sender_id] = get_messages(sender_id)\n    print(f'messages: {messages}')\n    pass",
+        "peekOfCode": "client = OpenAI(\n  api_key=os.environ.get(\"OPENAI_API_KEY\"),\n)\nmessages = dict()\ndef generate_chatgpt_answer(sender_id='', prompt=''):\n  # ----- Code with ChatGPT -----\n  if sender_id not in messages:\n    messages[sender_id] = get_messages(sender_id)\n    # print(f'messages: {messages}')\n    pass",
         "detail": "helpers.openai_",
         "documentation": {}
     },
@@ -159,7 +159,7 @@
         "kind": 5,
         "importPath": "helpers.openai_",
         "description": "helpers.openai_",
-        "peekOfCode": "messages = dict()\ndef generate_chatgpt_answer(sender_id='', prompt=''):\n  # ----- Code with ChatGPT -----\n  if sender_id not in messages:\n    messages[sender_id] = get_messages(sender_id)\n    print(f'messages: {messages}')\n    pass\n  # -----------------------------\n  chat_completion = client.chat.completions.create(\n    messages=[",
+        "peekOfCode": "messages = dict()\ndef generate_chatgpt_answer(sender_id='', prompt=''):\n  # ----- Code with ChatGPT -----\n  if sender_id not in messages:\n    messages[sender_id] = get_messages(sender_id)\n    # print(f'messages: {messages}')\n    pass\n  # -----------------------------\n  print(messages[sender_id])\n  chat_completion = client.chat.completions.create(",
         "detail": "helpers.openai_",
         "documentation": {}
     },
@@ -168,7 +168,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def verify():\n  if request.args.get('hub.mode') == 'subscribe' and request.args.get('hub.verify_token') == VERIFY_TOKEN:\n    return request.args.get('hub.challenge'), 200\n  return 'Verification token mismatch', 403\n@app.route('/', methods=['POST'])\ndef webhook():\n  data = request.get_json()\n  print(data)\n  if data['object'] == 'instagram':\n    for entry in data['entry']:",
+        "peekOfCode": "def verify():\n  if request.args.get('hub.mode') == 'subscribe' and request.args.get('hub.verify_token') == VERIFY_TOKEN:\n    return request.args.get('hub.challenge'), 200\n  return 'Verification token mismatch', 403\n@app.route('/', methods=['POST'])\ndef webhook():\n  data = request.get_json()\n  if data['object'] == 'instagram':\n    for entry in data['entry']:\n      for message in entry['messaging']:",
         "detail": "app",
         "documentation": {}
     },
@@ -177,7 +177,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def webhook():\n  data = request.get_json()\n  print(data)\n  if data['object'] == 'instagram':\n    for entry in data['entry']:\n      for message in entry['messaging']:\n        if message.get('message'):\n          text = message['message'].get('text')\n          sender_id = message['sender']['id']\n          generated_answer = generate_chatgpt_answer(sender_id=sender_id, prompt=text)",
+        "peekOfCode": "def webhook():\n  data = request.get_json()\n  if data['object'] == 'instagram':\n    for entry in data['entry']:\n      for message in entry['messaging']:\n        if message.get('message'):\n          text = message['message'].get('text')\n          sender_id = message['sender']['id']\n          generated_answer = generate_chatgpt_answer(sender_id=sender_id, prompt=text)\n          send_message(sender_id, generated_answer)",
         "detail": "app",
         "documentation": {}
     },
@@ -213,7 +213,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "INSTAGRAM_MARKER = os.getenv('INSTAGRAM_MARKER')\n@app.route('/', methods=['GET'])\ndef verify():\n  if request.args.get('hub.mode') == 'subscribe' and request.args.get('hub.verify_token') == VERIFY_TOKEN:\n    return request.args.get('hub.challenge'), 200\n  return 'Verification token mismatch', 403\n@app.route('/', methods=['POST'])\ndef webhook():\n  data = request.get_json()\n  print(data)",
+        "peekOfCode": "INSTAGRAM_MARKER = os.getenv('INSTAGRAM_MARKER')\n@app.route('/', methods=['GET'])\ndef verify():\n  if request.args.get('hub.mode') == 'subscribe' and request.args.get('hub.verify_token') == VERIFY_TOKEN:\n    return request.args.get('hub.challenge'), 200\n  return 'Verification token mismatch', 403\n@app.route('/', methods=['POST'])\ndef webhook():\n  data = request.get_json()\n  if data['object'] == 'instagram':",
         "detail": "app",
         "documentation": {}
     }

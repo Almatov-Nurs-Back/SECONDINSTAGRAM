@@ -12,9 +12,10 @@ def generate_chatgpt_answer(sender_id='', prompt=''):
   # ----- Code with ChatGPT -----
   if sender_id not in messages:
     messages[sender_id] = get_messages(sender_id)
-    print(f'messages: {messages}')
+    # print(f'messages: {messages}')
     pass
   # -----------------------------
+  print(messages[sender_id])
 
   chat_completion = client.chat.completions.create(
     messages=[
