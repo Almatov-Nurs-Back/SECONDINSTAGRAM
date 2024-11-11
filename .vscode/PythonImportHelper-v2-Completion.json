@@ -87,7 +87,7 @@
         "kind": 2,
         "importPath": "helpers.messages",
         "description": "helpers.messages",
-        "peekOfCode": "def get_instagram_id(instagram_user_id=''):\n    conversation_url = url + page_id + '/conversations'\n    param = {\n        'platform': 'instagram',\n        'access_token': page_access_token,\n        'user_id': instagram_user_id\n    }\n    response = requests.get(url=conversation_url, params=param)\n    response = response.json()\n    return response['data'][0]['id']",
+        "peekOfCode": "def get_instagram_id(instagram_user_id=''):\n  conversation_url = url + page_id + '/conversations'\n  param = {\n    'platform': 'instagram',\n    'access_token': page_access_token,\n    'user_id': instagram_user_id\n  }\n  response = requests.get(url=conversation_url, params=param).json()\n  # Проверяем, есть ли 'data' в ответе\n  if 'data' in response and response['data']:",
         "detail": "helpers.messages",
         "documentation": {}
     },
@@ -96,7 +96,7 @@
         "kind": 2,
         "importPath": "helpers.messages",
         "description": "helpers.messages",
-        "peekOfCode": "def get_messages(sender_id=''):\n    conversation_id = get_instagram_id(sender_id)\n    messages = asyncio.run(get_messages_using_conversation_id(conversation_id))\n    print(messages)\n    return messages",
+        "peekOfCode": "def get_messages(sender_id=''):\n  conversation_id = get_instagram_id(sender_id)\n  if conversation_id is None:\n    return []  # или лог ошибки\n  print(messages)\n  messages = asyncio.run(get_messages_using_conversation_id(conversation_id))\n  return messages",
         "detail": "helpers.messages",
         "documentation": {}
     },
@@ -105,7 +105,7 @@
         "kind": 5,
         "importPath": "helpers.messages",
         "description": "helpers.messages",
-        "peekOfCode": "username = 'test51877'\npage_id = '364595800072411'\nurl = 'https://graph.facebook.com/v20.0/'\npage_access_token = os.getenv('INSTAGRAM_MARKER')\ndef get_instagram_id(instagram_user_id=''):\n    conversation_url = url + page_id + '/conversations'\n    param = {\n        'platform': 'instagram',\n        'access_token': page_access_token,\n        'user_id': instagram_user_id",
+        "peekOfCode": "username = 'test51877'\npage_id = '364595800072411'\nurl = 'https://graph.facebook.com/v20.0/'\npage_access_token = os.getenv('INSTAGRAM_MARKER')\ndef get_instagram_id(instagram_user_id=''):\n  conversation_url = url + page_id + '/conversations'\n  param = {\n    'platform': 'instagram',\n    'access_token': page_access_token,\n    'user_id': instagram_user_id",
         "detail": "helpers.messages",
         "documentation": {}
     },
@@ -114,7 +114,7 @@
         "kind": 5,
         "importPath": "helpers.messages",
         "description": "helpers.messages",
-        "peekOfCode": "page_id = '364595800072411'\nurl = 'https://graph.facebook.com/v20.0/'\npage_access_token = os.getenv('INSTAGRAM_MARKER')\ndef get_instagram_id(instagram_user_id=''):\n    conversation_url = url + page_id + '/conversations'\n    param = {\n        'platform': 'instagram',\n        'access_token': page_access_token,\n        'user_id': instagram_user_id\n    }",
+        "peekOfCode": "page_id = '364595800072411'\nurl = 'https://graph.facebook.com/v20.0/'\npage_access_token = os.getenv('INSTAGRAM_MARKER')\ndef get_instagram_id(instagram_user_id=''):\n  conversation_url = url + page_id + '/conversations'\n  param = {\n    'platform': 'instagram',\n    'access_token': page_access_token,\n    'user_id': instagram_user_id\n  }",
         "detail": "helpers.messages",
         "documentation": {}
     },
@@ -123,7 +123,7 @@
         "kind": 5,
         "importPath": "helpers.messages",
         "description": "helpers.messages",
-        "peekOfCode": "url = 'https://graph.facebook.com/v20.0/'\npage_access_token = os.getenv('INSTAGRAM_MARKER')\ndef get_instagram_id(instagram_user_id=''):\n    conversation_url = url + page_id + '/conversations'\n    param = {\n        'platform': 'instagram',\n        'access_token': page_access_token,\n        'user_id': instagram_user_id\n    }\n    response = requests.get(url=conversation_url, params=param)",
+        "peekOfCode": "url = 'https://graph.facebook.com/v20.0/'\npage_access_token = os.getenv('INSTAGRAM_MARKER')\ndef get_instagram_id(instagram_user_id=''):\n  conversation_url = url + page_id + '/conversations'\n  param = {\n    'platform': 'instagram',\n    'access_token': page_access_token,\n    'user_id': instagram_user_id\n  }\n  response = requests.get(url=conversation_url, params=param).json()",
         "detail": "helpers.messages",
         "documentation": {}
     },
@@ -132,7 +132,7 @@
         "kind": 5,
         "importPath": "helpers.messages",
         "description": "helpers.messages",
-        "peekOfCode": "page_access_token = os.getenv('INSTAGRAM_MARKER')\ndef get_instagram_id(instagram_user_id=''):\n    conversation_url = url + page_id + '/conversations'\n    param = {\n        'platform': 'instagram',\n        'access_token': page_access_token,\n        'user_id': instagram_user_id\n    }\n    response = requests.get(url=conversation_url, params=param)\n    response = response.json()",
+        "peekOfCode": "page_access_token = os.getenv('INSTAGRAM_MARKER')\ndef get_instagram_id(instagram_user_id=''):\n  conversation_url = url + page_id + '/conversations'\n  param = {\n    'platform': 'instagram',\n    'access_token': page_access_token,\n    'user_id': instagram_user_id\n  }\n  response = requests.get(url=conversation_url, params=param).json()\n  # Проверяем, есть ли 'data' в ответе",
         "detail": "helpers.messages",
         "documentation": {}
     },
