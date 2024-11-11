@@ -69,6 +69,6 @@ def get_messages(sender_id=''):
   conversation_id = get_instagram_id(sender_id)
   if conversation_id is None:
     return []  # или лог ошибки
-  print(messages)
   messages = asyncio.run(get_messages_using_conversation_id(conversation_id))
+  print(messages)
   return messages
