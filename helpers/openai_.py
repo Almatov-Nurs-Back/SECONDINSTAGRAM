@@ -47,4 +47,4 @@ def generate_chatgpt_answer(sender_id='', prompt=''):
   # return prompt
   # # ----------------------------
 
-print(generate_chatgpt_answer(sender_id='1198676774465284', prompt='Чем вы занимаетесь?'))
+# print(generate_chatgpt_answer(sender_id='1198676774465284', prompt='Чем вы занимаетесь?'))
