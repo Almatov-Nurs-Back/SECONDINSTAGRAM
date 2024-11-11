@@ -35,7 +35,6 @@ def generate_chatgpt_answer(sender_id='', prompt=''):
     max_tokens=1000,
   )
   return chat_completion.choices[0].message.content
-  # -----------------------------
 
   # # ----- Code for testing -----
   # if 'Привет' in prompt or 'привет' in prompt:
