@@ -31,7 +31,7 @@ def generate_chatgpt_answer(sender_id='', prompt=''):
         'content': prompt
       }
     ],
-    model="gpt-3.5-turbo-0125",
+    model="gpt-4o-mini",
     max_tokens=1000,
   )
   return chat_completion.choices[0].message.content
