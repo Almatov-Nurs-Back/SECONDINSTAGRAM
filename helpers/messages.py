@@ -15,9 +15,8 @@ def get_instagram_id(instagram_user_id=''):
     'platform': 'instagram',
     'access_token': page_access_token,
     'user_id': instagram_user_id,
-    'limit': 10,
   }
-  response = requests.get(url=conversation_url, params=param, timeout=30).json()
+  response = requests.get(url=conversation_url, params=param).json()
 
   # Проверяем, есть ли 'data' в ответе
   if 'data' in response and response['data']:
@@ -48,7 +47,7 @@ async def get_messages_using_conversation_id(conversation_id):
       data = await response.json()
       message_ids = [msg['id'] for msg in data.get('messages', {}).get('data', [])]
 
-      tasks = [fetch_message(session, message_id) for message_id in message_ids]
+      tasks = [fetch_message(session, message_id) for message_id in message_ids[0:10]]
       messages_data = await asyncio.gather(*tasks)
 
   messages = []
