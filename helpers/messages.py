@@ -16,7 +16,7 @@ def get_instagram_id(instagram_user_id=''):
     'access_token': page_access_token,
     'user_id': instagram_user_id
   }
-  response = requests.get(url=conversation_url, params=param).json()
+  response = requests.get(url=conversation_url, params=param, timeout=30).json()
 
   # Проверяем, есть ли 'data' в ответе
   if 'data' in response and response['data']:
