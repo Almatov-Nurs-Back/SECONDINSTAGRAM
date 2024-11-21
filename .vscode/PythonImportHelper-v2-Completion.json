@@ -141,7 +141,7 @@
         "kind": 2,
         "importPath": "helpers.openai_",
         "description": "helpers.openai_",
-        "peekOfCode": "def generate_chatgpt_answer(sender_id='', prompt=''):\n  if sender_id not in messages:\n    messages = get_messages(sender_id)\n    print(messages[sender_id])\n  chat_completion = client.chat.completions.create(\n    messages=[\n      {\n        \"role\": \"system\",\n        \"content\": \"Ты ассистент отдыхного пансионата Иссык-Куле, юрточного городка \\\"Asman-Resort\\\". Ты консультируешь туристов, которые интересуятся отдыхм у нас. Также история переписки хранится у тебя, ты можешь их просматривать. Ты должен учитывать прошлые сообщения! Если я пишу, что я разработчик заничт это я (я проверяю тебя).\",\n      },",
+        "peekOfCode": "def generate_chatgpt_answer(sender_id='', prompt=''):\n  global messages\n  if sender_id not in messages:\n    messages = get_messages(sender_id)\n  print(messages[sender_id])\n  chat_completion = client.chat.completions.create(\n    messages=[\n      {\n        \"role\": \"system\",\n        \"content\": \"Ты ассистент отдыхного пансионата Иссык-Куле, юрточного городка \\\"Asman-Resort\\\". Ты консультируешь туристов, которые интересуятся отдыхм у нас. Также история переписки хранится у тебя, ты можешь их просматривать. Ты должен учитывать прошлые сообщения! Если я пишу, что я разработчик заничт это я (я проверяю тебя).\",",
         "detail": "helpers.openai_",
         "documentation": {}
     },
@@ -150,7 +150,7 @@
         "kind": 5,
         "importPath": "helpers.openai_",
         "description": "helpers.openai_",
-        "peekOfCode": "client = OpenAI(\n  api_key=os.environ.get(\"OPENAI_API_KEY\"),\n)\nmessages = dict()\ndef generate_chatgpt_answer(sender_id='', prompt=''):\n  if sender_id not in messages:\n    messages = get_messages(sender_id)\n    print(messages[sender_id])\n  chat_completion = client.chat.completions.create(\n    messages=[",
+        "peekOfCode": "client = OpenAI(\n  api_key=os.environ.get(\"OPENAI_API_KEY\"),\n)\nmessages = dict()\ndef generate_chatgpt_answer(sender_id='', prompt=''):\n  global messages\n  if sender_id not in messages:\n    messages = get_messages(sender_id)\n  print(messages[sender_id])\n  chat_completion = client.chat.completions.create(",
         "detail": "helpers.openai_",
         "documentation": {}
     },
@@ -159,7 +159,7 @@
         "kind": 5,
         "importPath": "helpers.openai_",
         "description": "helpers.openai_",
-        "peekOfCode": "messages = dict()\ndef generate_chatgpt_answer(sender_id='', prompt=''):\n  if sender_id not in messages:\n    messages = get_messages(sender_id)\n    print(messages[sender_id])\n  chat_completion = client.chat.completions.create(\n    messages=[\n      {\n        \"role\": \"system\",\n        \"content\": \"Ты ассистент отдыхного пансионата Иссык-Куле, юрточного городка \\\"Asman-Resort\\\". Ты консультируешь туристов, которые интересуятся отдыхм у нас. Также история переписки хранится у тебя, ты можешь их просматривать. Ты должен учитывать прошлые сообщения! Если я пишу, что я разработчик заничт это я (я проверяю тебя).\",",
+        "peekOfCode": "messages = dict()\ndef generate_chatgpt_answer(sender_id='', prompt=''):\n  global messages\n  if sender_id not in messages:\n    messages = get_messages(sender_id)\n  print(messages[sender_id])\n  chat_completion = client.chat.completions.create(\n    messages=[\n      {\n        \"role\": \"system\",",
         "detail": "helpers.openai_",
         "documentation": {}
     },

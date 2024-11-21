@@ -9,9 +9,11 @@ client = OpenAI(
 messages = dict()
 
 def generate_chatgpt_answer(sender_id='', prompt=''):
+  global messages
+
   if sender_id not in messages:
     messages = get_messages(sender_id)
-    print(messages[sender_id])
+  print(messages[sender_id])
 
   chat_completion = client.chat.completions.create(
     messages=[
