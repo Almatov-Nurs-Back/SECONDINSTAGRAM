@@ -6,12 +6,12 @@ client = OpenAI(
   api_key=os.environ.get("OPENAI_API_KEY"),
 )
 
-messages = []
+messages = dict()
 
 def generate_chatgpt_answer(sender_id='', prompt=''):
   if sender_id not in messages:
     messages = get_messages(sender_id)
-  print(messages)
+  print(messages[sender_id])
 
   chat_completion = client.chat.completions.create(
     messages=[
