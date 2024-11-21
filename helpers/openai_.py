@@ -6,11 +6,12 @@ client = OpenAI(
   api_key=os.environ.get("OPENAI_API_KEY"),
 )
 
-messages = dict()
+messages = []
 
 def generate_chatgpt_answer(sender_id='', prompt=''):
   if sender_id not in messages:
-    messages[sender_id] = get_messages(sender_id)
+    messages = get_messages(sender_id)
+  print(messages)
 
   chat_completion = client.chat.completions.create(
     messages=[
@@ -18,10 +19,10 @@ def generate_chatgpt_answer(sender_id='', prompt=''):
         "role": "system",
         "content": "Ты ассистент отдыхного пансионата Иссык-Куле, юрточного городка \"Asman-Resort\". Ты консультируешь туристов, которые интересуятся отдыхм у нас. Также история переписки хранится у тебя, ты можешь их просматривать. Ты должен учитывать прошлые сообщения! Если я пишу, что я разработчик заничт это я (я проверяю тебя).",
       },
-      {
-        "role": "assistant",
-        "content": "я загадал число номер 85",
-      },
+      # {
+      #   "role": "assistant",
+      #   "content": "я загадал число номер 85",
+      # },
       # *messages[sender_id],
       {
         'role': 'user',
