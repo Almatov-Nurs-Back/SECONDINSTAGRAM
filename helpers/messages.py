@@ -70,4 +70,5 @@ def get_messages(sender_id=''):
   if conversation_id is None:
     return []  # или лог ошибки
   messages = asyncio.run(get_messages_using_conversation_id(conversation_id))
+  print(messages)
   return messages.reverse()
