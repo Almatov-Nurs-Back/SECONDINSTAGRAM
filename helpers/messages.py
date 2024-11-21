@@ -14,7 +14,8 @@ def get_instagram_id(instagram_user_id=''):
   param = {
     'platform': 'instagram',
     'access_token': page_access_token,
-    'user_id': instagram_user_id
+    'user_id': instagram_user_id,
+    'limit': 10,
   }
   response = requests.get(url=conversation_url, params=param, timeout=30).json()
 
