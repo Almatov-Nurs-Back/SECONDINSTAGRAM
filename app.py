@@ -11,7 +11,7 @@ app = Flask(__name__)
 VERIFY_TOKEN = os.getenv('VERIFY_TOKEN')
 INSTAGRAM_MARKER = os.getenv('INSTAGRAM_MARKER')
 
-@app.route('/api/webhook', methods=['GET'])
+@app.route('/', methods=['GET'])
 def verify():
   print(f"Debugging: {request.args.get('hub.verify_token')}")
   if request.args.get('hub.mode') == 'subscribe' and request.args.get('hub.verify_token') == VERIFY_TOKEN:
