@@ -177,7 +177,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def webhook():\n  data = request.get_json()\n  if data['object'] == 'instagram':\n    for entry in data['entry']:\n      for message in entry['messaging']:\n        if message.get('message'):\n          text = message['message'].get('text')\n          sender_id = message['sender']['id']\n          # generated_answer = generate_chatgpt_answer(sender_id=sender_id, prompt=text)\n          print(\"MESSAGE FROM USER:\"+text)",
+        "peekOfCode": "def webhook():\n  data = request.get_json()\n  if data['object'] == 'instagram':\n    for entry in data['entry']:\n      for message in entry['messaging']:\n        if message.get('message'):\n          text = message['message'].get('text')\n          sender_id = message['sender']['id']\n          # generated_answer = generate_chatgpt_answer(sender_id=sender_id, prompt=text)\n          print(\"MESSAGE FROM USER: \"+text)",
         "detail": "app",
         "documentation": {}
     },
