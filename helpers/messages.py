@@ -27,13 +27,13 @@ def get_instagram_id(instagram_user_id=''):
     return None
 
 async def fetch_message(session, message_id):
-    message_url = url + message_id
-    params = {
-      'fields': 'message,from',
-      'access_token': page_access_token
-    }
-    async with session.get(message_url, params=params) as response:
-        return await response.json()
+  message_url = url + message_id
+  params = {
+    'fields': 'message,from',
+    'access_token': page_access_token
+  }
+  async with session.get(message_url, params=params) as response:
+    return await response.json()
 
 async def get_messages_using_conversation_id(conversation_id):
   message_url = url + conversation_id
