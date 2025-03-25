@@ -11,12 +11,12 @@ app = Flask(__name__)
 VERIFY_TOKEN = os.getenv('VERIFY_TOKEN')
 INSTAGRAM_MARKER = os.getenv('INSTAGRAM_MARKER')
 
-@app.route('/', methods=['GET'])
+@app.route('/api/webhook', methods=['GET'])
 def verify():
-  # print(f"Debugging: {request.args.get('hub.verify_token')}")
+  print(f"Debugging: {request.args.get('hub.verify_token')}")
+  if request.args.get('hub.mode') == 'subscribe' and request.args.get('hub.verify_token') == VERIFY_TOKEN:
     return request.args.get('hub.challenge'), 200
-  # if request.args.get('hub.mode') == 'subscribe' and request.args.get('hub.verify_token') == VERIFY_TOKEN:
-  # return 'Verification token mismatch', 403
+  return 'Verification token mismatch', 403
 
 @app.route('/', methods=['POST'])
 def webhook():
