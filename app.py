@@ -13,7 +13,7 @@ INSTAGRAM_MARKER = os.getenv('INSTAGRAM_MARKER')
 
 @app.route('/', methods=['GET'])
 def verify():
-  print(request.args.get('hub.verify_token'))
+  print('Debugging: '+ request.args.get('hub'))
   if request.args.get('hub.mode') == 'subscribe' and request.args.get('hub.verify_token') == VERIFY_TOKEN:
     return request.args.get('hub.challenge'), 200
   return 'Verification token mismatch', 403
