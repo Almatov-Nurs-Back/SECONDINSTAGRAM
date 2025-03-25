@@ -13,10 +13,10 @@ INSTAGRAM_MARKER = os.getenv('INSTAGRAM_MARKER')
 
 @app.route('/', methods=['GET'])
 def verify():
-  print(f"Debugging: {request.args.get('hub.verify_token')}")
-  if request.args.get('hub.mode') == 'subscribe' and request.args.get('hub.verify_token') == VERIFY_TOKEN:
+  # print(f"Debugging: {request.args.get('hub.verify_token')}")
     return request.args.get('hub.challenge'), 200
-  return 'Verification token mismatch', 403
+  # if request.args.get('hub.mode') == 'subscribe' and request.args.get('hub.verify_token') == VERIFY_TOKEN:
+  # return 'Verification token mismatch', 403
 
 @app.route('/', methods=['POST'])
 def webhook():
